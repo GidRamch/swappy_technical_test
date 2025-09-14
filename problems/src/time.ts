@@ -19,7 +19,11 @@ class Time {
 
     formatMinutesToHHMM(): string {
         const h = Math.floor(this.value);
-        const m = Math.floor((this.value - h) * 60);
+
+        // After console logging, I saw that values were rounding down for minute values
+        // I changed .floor to .round to ensure that the rounding is properly applied
+
+        const m = Math.round((this.value - h) * 60);
         return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`;
     }
 }

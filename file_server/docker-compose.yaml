@@ -1,5 +1,7 @@
 services:
     file-server:
+        image: nginx:alpine
         build: .
         ports:
             - "30000:80"
+        command: ["nginx", "-g", "daemon off;"]

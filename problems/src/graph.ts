@@ -40,7 +40,11 @@ class GraphNode {
         // Allow adding node from value or existing node for recursion
         let node = val instanceof GraphNode ? val : new GraphNode(val);
 
-        if (node === this) {
+
+        // Changed node==this, to node.value == this.value, because objects are compared by reference
+        // this would always be a different reference and never be equal to node, which is a different object entirely
+
+        if (node.value === this.value) {
             // Already exists, do nothing and return false
             return false;
         }
